@@ -18,6 +18,9 @@
 
 ### API ###
 
+* Data is returned as JSON
+* Status code will be 200 on success unless otherwise noted
+
 #### Returns data for a single question chosen at random
 `curl http://localhost:5000/question`
 
@@ -30,7 +33,7 @@
 #### Update question with id 1000 and return status code 201
 `curl http://localhost:5000/question/1000 -d "answer=342" -X PUT`
 
-#### Add a new questio
+#### Add a new question and resturn status code 201
 `curl http://localhost:5000/questions -d "question=What is 1+%2B+1?&answer=2&distractor=3&distractor=4" -X POST`
 
 #### List all questions
