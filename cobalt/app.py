@@ -114,8 +114,7 @@ class QuestionsResource(restful.Resource):
     def get(self):
         items=None
         params=parser.parse_args()
-        print "Params: ", params
-        
+
         qu=Question.query
         
         orderby_criterion=None
@@ -126,11 +125,11 @@ class QuestionsResource(restful.Resource):
         qu=qu.order_by(orderby_criterion)
         
         if params['answer-lt']: 
-            qu=qu.filter(Question.answer < params['answer-lt'])
+            qu=qu.filter(Question.answer < int(params['answer-lt']))
         if params['answer-eq']: 
-            qu=qu.filter(Question.answer == params['answer-eq'])
+            qu=qu.filter(Question.answer == int(params['answer-eq']))
         if params['answer-gt']: 
-            qu=qu.filter(Question.answer > params['answer-gt'])
+            qu=qu.filter(Question.answer > int(params['answer-gt']))
 
         if params.get('page', None):
             items=qu.paginate(page=params['page'], per_page=params['pagesize']).items
